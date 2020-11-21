@@ -1,7 +1,8 @@
 # wordpress-centos-7
-==========================================
+
 This playbook has the funcion of installing Wordpress and Mariadb.
-link: https://galaxy.ansible.com/erickveiga02/wordpress_centos7
+
+- link: https://galaxy.ansible.com/erickveiga02/wordpress_centos7
 
  Tested ON:
  -------------------
