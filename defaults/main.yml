@@ -1,0 +1,8 @@
+---
+# defaults file for Wordpress
+package: [php-mysqlnd, php-fpm, php, php-mbstring, php-gd, mariadb-server, httpd, tar, curl, php-json, vim, php-ldap, php-pear,  MySQL-python]
+dest_wordpress: /var/www/html
+mysql_root_password: d@t@b@s@3sql
+mysql_db: wordpressdb
+mysql_user_wordpress: wordpress_user
+mysql_user_password_wordpress: wordpresspassword

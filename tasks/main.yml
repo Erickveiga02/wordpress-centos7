@@ -1,0 +1,85 @@
+---
+# tasks file for Wordpress
+- name: Install epel
+  yum:
+    name: epel-release
+    state: latest
+
+- name: Install remi
+  yum:
+    name: http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
+
+- name: Enable php
+  shell: yum --enablerepo=remi-php73 install php
+  ignore_errors: true
+
+- name: Install Package
+  yum: name={{ item }} state=latest
+  loop: "{{ package }}"
+
+- name: Firewall Rule HTTP
+  ansible.posix.firewalld:
+    service: http
+    permanent: yes
+    state: enabled
+
+- name: Firewall Rule HTTPS
+  ansible.posix.firewalld:
+    service: https
+    permanent: yes
+    state: enabled
+
+- name: reload service firewalld
+  systemd:
+    name: firewalld
+    state: reloaded
+
+- name: Enable HTTPD
+  service:
+    name: httpd
+    state: started
+    enabled: yes
+
+- name: Enable Mariadb
+  service:
+    name: mariadb
+    state: started
+    enabled: yes
+
+- name: Download latest version Wordpress
+  unarchive:
+    src: https://wordpress.org/latest.tar.gz
+    dest: "{{ dest_wordpress }}"
+    remote_src: yes
+    owner: root
+    group: root
+    mode: "0655"
+  notify:
+  - Restart HTTPD
+
+- name: Set root account mysql
+  mysql_user: user=root password="{{ mysql_root_password }}" host=localhost
+  ignore_errors: true
+
+- name: Create database Wordpress
+  mysql_db:
+    name: "{{ mysql_db }}"
+    state: present
+    login_user: root
+    login_password: "{{ mysql_root_password }}"
+
+- name: Create Mysql User Wordpress
+  mysql_user:
+    name: "{{ mysql_user_wordpress }}"
+    password: "{{ mysql_user_password_wordpress }}"
+    priv: "{{ mysql_db }}.*:ALL"
+    state: present
+    login_user: root
+    login_password: "{{ mysql_root_password }}"
+
+- name: Put SELinux in permissive mode, logging actions that would be blocked.
+  ansible.posix.selinux:
+    policy: targeted
+    state: permissive
+  notify:
+  - Restart HTTPD
