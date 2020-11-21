@@ -1,35 +1,39 @@
 # wordpress-centos-7
-<h1> Ansible - WordPress Role </h1>
-
+==========================================
 This playbook has the funcion of installing Wordpress and Mariadb.
-</hr>
-<h2> Tested ON: </h2>
+link: https://galaxy.ansible.com/erickveiga02/wordpress_centos7
 
-<li>Centos 7.9</li>
-</hr>
-<h2>variable file: </h2>
-<h3>file:"defaults/main.yml"<h3/>
+ Tested ON:
+ -------------------
 
-<li>Before executing it is necessary to change!!</li>
+- Centos 7.9
 
-<p>dest_wordpress: /var/www/html</br>
+variable file:
+--------------------
+- file:"defaults/main.yml"
 
-mysql_root_password: d@t@b@s@3sql</br>
+- Before executing it is necessary to change!!
+```yaml
+dest_wordpress: /var/www/html
 
-mysql_db: wordpressdb</br>
+mysql_root_password: d@t@b@s@3sql
 
-mysql_user_wordpress: wordpress_user</br>
+mysql_db: wordpressdb
 
-mysql_user_password_wordpress: wordpresspassword</p>
+mysql_user_wordpress: wordpress_user
 
-</hr>
-<h2>Example - Install the role:</h2>
-
-<a>ansible-galaxy install erickveiga02.wordpress_centos7</a>
-</hr>
-<h2>Playbook.yml example:</h2>
-
----
-<p>- hosts: wordpress</br>
-  roles:</br>
-    - role: erickveiga02.wordpress_centos7</p>
+mysql_user_password_wordpress: wordpresspassword
+```
+Example - Install the role:
+---------------
+```bash
+ansible-galaxy install erickveiga02.wordpress_centos7
+```
+Playbook.yml example:
+-------
+```yaml
+- hosts: wordpress
+  roles:
+    - role: erickveiga02.wordpress_centos7
+ ```
+ 
