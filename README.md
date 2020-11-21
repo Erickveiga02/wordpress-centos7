@@ -12,11 +12,15 @@ This playbook has the funcion of installing Wordpress and Mariadb.
 
 <li>Before executing it is necessary to change!!</li>
 
-dest_wordpress: /var/www/html
-mysql_root_password: d@t@b@s@3sql
-mysql_db: wordpressdb
-mysql_user_wordpress: wordpress_user
-mysql_user_password_wordpress: wordpresspassword
+<p>dest_wordpress: /var/www/html</br>
+
+mysql_root_password: d@t@b@s@3sql</br>
+
+mysql_db: wordpressdb</br>
+
+mysql_user_wordpress: wordpress_user</br>
+
+mysql_user_password_wordpress: wordpresspassword</p>
 
 
 <h2>Example - Install the role:</h2>
