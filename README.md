@@ -3,6 +3,9 @@
 
 This playbook has the funcion of installing Wordpress and Mariadb.
 
+Ansible-Galaxy:
+------
+- Link: https://galaxy.ansible.com/erickveiga02/wordpress_centos7
  Tested ON: 
 --------
 - Centos 7.9
