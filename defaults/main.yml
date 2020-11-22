@@ -1,6 +1,6 @@
 ---
 # defaults file for Wordpress
-package: [php-mysqlnd, php-fpm, php, php-mbstring, php-gd, mariadb-server, httpd, tar, curl, php-json, vim, php-ldap, php-pear,  MySQL-python]
+package: [php73, php73-php-mysqlnd, php73-php-fpm, php73-php-mbstring, php73-php-gd, mariadb-server, httpd, tar, curl, php73-php-json, vim, php73-php-ldap, php73-php-pear,  MySQL-python]
 dest_wordpress: /var/www/html
 mysql_root_password: d@t@b@s@3sql
 mysql_db: wordpressdb
