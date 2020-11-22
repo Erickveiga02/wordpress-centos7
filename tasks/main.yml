@@ -13,8 +13,9 @@
   shell: yum-config-manager --enable remi-php74
 
 - name: Install Package
-  yum: name={{ item }} state=latest
-  loop: "{{ package }}"
+  yum: 
+    name: "{{ package }}"
+    state: latest
 
 - name: Firewall Rule HTTP
   ansible.posix.firewalld:
